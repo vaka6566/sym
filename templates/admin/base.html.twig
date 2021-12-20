@@ -14,7 +14,6 @@ Awesome Videos _ admin panel
 
 {% block main %}
 <div class="container-fluid">
-
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
         <h5 class="my-0 mr-md-auto font-weight-normal">Awesome Videos</h5>
         <a class="nav-link active" href="{{path('main_page')}}"> Go to public site</a>      
@@ -81,7 +80,7 @@ Awesome Videos _ admin panel
 {% block footerlinks %}{% endblock %}
 
 {% block customJavaScript %}
-    <script>
+<script>
     $('input[type="file"]').change(function (e) {
         var fileName = e.target.files[0].name;
         console.log(e.target.files[0]);
