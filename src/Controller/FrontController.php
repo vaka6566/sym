@@ -20,17 +20,20 @@ class FrontController extends AbstractController
         return $this->render('front/index.html.twig');
     }
 
-    ##[Route('/login', name: 'login')]
-    #public function login(AuthenticationUtils $helper): Response
-    #{
-        #return $this->render('front/login.html.twig', ['error' => $helper->getLastAuthenticationError()]);
-    #}
+    #[Route('/login', name: 'login')]
+    public function login(AuthenticationUtils $helper): Response
+    {
+        $error = $helper->getLastAuthenticationError();
+        return $this->render('front/login.html.twig', [
+            'error'         => $error,
+        ]);
+    }
 
-    ##[Route('/logout', name: 'logout', methods:["GET"])]
-    #public function logout() : void
-    #{
-        #throw new \Exception('This should never be reached!');
-    #}
+    #[Route('/logout', name: 'logout', methods:["GET"])]
+    public function logout() : void
+    {
+        throw new \Exception('This should never be reached!');
+    }
 
     #[Route('/video_list/category/{categoryname}, {id}/{page}', name: 'video_list')]
     public function videoList($id, $page=1, CategoryTreeFrontPage $categories, ManagerRegistry $doctrine, Request $request): Response
